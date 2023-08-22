@@ -1,20 +1,32 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import SafeViewAndroid from "./src/utils/SafeViewAndroid";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>This is the application of the Atharva</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
+        <View style={styles.container1}>
+          <Text>Search is here</Text>
+          <StatusBar style="auto" />
+        </View>
+        <View style={styles.container2}>
+          <Text>List is here</Text>
+        </View>
+        <StatusBar style="auto" />
+      </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  container1: {
+    backgroundColor: "lightgreen",
+    padding: 16,
+  },
+  container2: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    padding: 16,
+    backgroundColor: "lightblue",
   },
 });
