@@ -1,8 +1,13 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Card, Button } from "react-native-paper";
+import { View } from "react-native";
+import { Card } from "react-native-paper";
+import { styled } from "styled-components";
 
-export const RestaurantsInfo = (restaurant = {}) => {
+const Title = styled.Text`
+  padding-top: 10px;
+`;
+
+export const RestaurantsInfoCard = (restaurant = {}) => {
   const {
     name = "Eagle Restaurant",
     icon,
@@ -17,13 +22,10 @@ export const RestaurantsInfo = (restaurant = {}) => {
 
   return (
     <View>
-      <Card>
-        <Card.Content>
-          <Text variant="titleLarge">{name}</Text>
-        </Card.Content>
+      <Card elevation={7}>
         <Card.Cover source={{ uri: photos[0] }} />
         <Card.Content>
-          <Text variant="bodyMedium">{address}</Text>
+          <Title variant="bodyMedium">{address}</Title>
         </Card.Content>
       </Card>
     </View>
