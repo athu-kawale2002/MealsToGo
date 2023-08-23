@@ -6,16 +6,17 @@ import { RestaurantsInfoCard } from "../components/restaurants-info-card.compone
 import { styled } from "styled-components";
 
 const SearchView = styled.View`
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 const ListView = styled.View`
   flex: 1;
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.ui.error};
 `;
 
 const SearchBarTop = styled(Searchbar)`
-  border-radius: 7px;
+  border-radius: ${(props) => props.theme.space[2]};
 `;
 
 export const RestaurantsScreen = () => {
