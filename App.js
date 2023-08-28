@@ -7,7 +7,7 @@ import { theme } from "./src/infrastructure/theme";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import SafeViewAndroid from "./src/utils/SafeViewAndroid";
 import { Ionicons } from "@expo/vector-icons";
-
+import { restaurantsRequest } from "./src/services/restaurants/restaurants.services";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -42,6 +42,8 @@ const createScreenOptions = ({ route }) => {
       borderColor: "black",
       borderTopWidth: 0.15,
     },
+    tabBarActiveTintColor: "tomato",
+    tabBarInactiveTintColor: "gray",
   };
 };
 
@@ -63,13 +65,7 @@ export default function App() {
         {/* <RestaurantsScreen /> */}
         <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
           <NavigationContainer>
-            <Tab.Navigator
-              screenOptions={createScreenOptions}
-              tabBarOptions={{
-                activeTintColor: "tomato",
-                inactiveTintColor: "gray",
-              }}
-            >
+            <Tab.Navigator screenOptions={createScreenOptions}>
               <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
               <Tab.Screen name="Map" component={Map} />
               <Tab.Screen name="Settings" component={Settings} />

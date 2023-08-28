@@ -16,7 +16,6 @@ import {
   Image15,
   BoderCard,
 } from "./restaurants-info-card.styles";
-import { styled } from "styled-components";
 
 export const RestaurantsInfoCard = (restaurant = {}) => {
   const {
