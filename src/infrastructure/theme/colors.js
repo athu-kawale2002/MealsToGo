@@ -9,6 +9,8 @@ export const colors = {
     secondary: "#757575",
     tertiary: "#F1F1F1",
     quaternary: "#FFFFFF",
+    lolary: "#fa5f55",
+    torary: "#faa0a0",
     disabled: "#DEDEDE",
     error: "#D0421B",
     success: "#138000",
