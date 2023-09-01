@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FlatList } from "react-native";
-import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
+import { ActivityIndicator } from "react-native-paper";
 import { RestaurantsInfoCard } from "../components/restaurants-info-card.component";
 import { styled } from "styled-components";
 import { Spacer } from "../../../components/spacer/components.spacer";
