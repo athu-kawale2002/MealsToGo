@@ -15,6 +15,7 @@ import {
   SpaceView,
   Image15,
   BoderCard,
+  CardCover,
 } from "./restaurants-info-card.styles";
 
 export const RestaurantsInfoCard = ({ restaurant }) => {
@@ -37,7 +38,7 @@ export const RestaurantsInfoCard = ({ restaurant }) => {
   return (
     <View>
       <BoderCard elevation={7}>
-        <Card.Cover source={{ uri: photos[0] }} />
+        <CardCover source={{ uri: photos[0] }} />
         <Card.Content>
           <Title variant="bodyMedium">{name}</Title>
           <Section>

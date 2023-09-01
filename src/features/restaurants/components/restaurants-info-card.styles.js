@@ -48,3 +48,7 @@ export const BoderCard = styled(Card)`
   border-color: black;
   border-width: 0.2px;
 `;
+
+export const CardCover = styled(Card.Cover)`
+  padding: 4px;
+`;
