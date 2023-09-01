@@ -7,7 +7,8 @@ import { theme } from "./src/infrastructure/theme";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import SafeViewAndroid from "./src/utils/SafeViewAndroid";
 import { Ionicons } from "@expo/vector-icons";
-import { restaurantsRequest } from "./src/services/restaurants/restaurants.services";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -64,13 +65,20 @@ export default function App() {
       <ThemeProvider theme={theme}>
         {/* <RestaurantsScreen /> */}
         <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
-          <NavigationContainer>
-            <Tab.Navigator screenOptions={createScreenOptions}>
-              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-              <Tab.Screen name="Map" component={Map} />
-              <Tab.Screen name="Settings" component={Settings} />
-            </Tab.Navigator>
-          </NavigationContainer>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <NavigationContainer>
+                <Tab.Navigator screenOptions={createScreenOptions}>
+                  <Tab.Screen
+                    name="Restaurants"
+                    component={RestaurantsScreen}
+                  />
+                  <Tab.Screen name="Map" component={Map} />
+                  <Tab.Screen name="Settings" component={Settings} />
+                </Tab.Navigator>
+              </NavigationContainer>
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
         </SafeAreaView>
       </ThemeProvider>
       <StatusBar style="auto" />

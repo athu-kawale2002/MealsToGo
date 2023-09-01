@@ -1,20 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
+import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
 import { RestaurantsInfoCard } from "../components/restaurants-info-card.component";
 import { styled } from "styled-components";
 import { Spacer } from "../../../components/spacer/components.spacer";
-
-const SearchView = styled.View`
-  padding: ${(props) => props.theme.space[2]};
-  border-color: grey;
-  border-bottom-width: 0.19px;
-`;
-
-const SearchBarTop = styled(Searchbar)`
-  border-radius: ${(props) => props.theme.space[2]};
-  height: 55px;
-`;
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { Search } from "../components/search.component";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -23,47 +14,52 @@ const RestaurantList = styled(FlatList).attrs({
 })``;
 
 const BackGroundView = styled.View`
+  flex: 1;
   background-color: ${(props) => props.theme.colors.ui.torary};
 `;
 
+const Loading = styled(ActivityIndicator)`
+  margin-right: 50%;
+  margin-left: 50%;
+  margin-top: 50%;
+  margin-bottom: 50%;
+`;
+const LoadingContainer = styled.View`
+  position: "absolute";
+`;
+
+const ListView = styled.View`
+  margin-bottom: ${(props) => props.theme.space[5]};
+`;
+
 export const RestaurantsScreen = () => {
-  const [searchQuery, setSearchQuery] = React.useState(null);
-  const onChangeSearch = (query) => setSearchQuery(query);
+  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+  // <ActivityIndicator animating={true} color={Colors.red800} />
   return (
     <>
       <BackGroundView>
-        <SearchView>
-          <SearchBarTop
-            lightTheme
-            placeholder="Search Something . . ."
-            onChangeText={onChangeSearch}
-            value={searchQuery}
-          />
-        </SearchView>
-        <RestaurantList
-          data={[
-            { name: 1 },
-            { name: 2 },
-            { name: 3 },
-            { name: 4 },
-            { name: 5 },
-            { name: 6 },
-            { name: 7 },
-            { name: 8 },
-            { name: 9 },
-            { name: 10 },
-            { name: 11 },
-            { name: 12 },
-            { name: 13 },
-            { name: 14 },
-          ]}
-          renderItem={() => (
-            <Spacer position="bottom" size="large">
-              <RestaurantsInfoCard />
-            </Spacer>
+        <Search />
+        <ListView>
+          {isLoading && (
+            <LoadingContainer>
+              <Loading size={55} animating={true} color={"#686868"} />
+            </LoadingContainer>
           )}
-          keyExtractor={(item) => item.name}
-        />
+          <RestaurantList
+            key={({ item }) => {
+              return { item };
+            }}
+            data={restaurants}
+            renderItem={({ item }) => {
+              return (
+                <Spacer position="bottom" size="large">
+                  <RestaurantsInfoCard restaurant={item} />
+                </Spacer>
+              );
+            }}
+            keyExtractor={(item) => item.name}
+          />
+        </ListView>
       </BackGroundView>
     </>
   );

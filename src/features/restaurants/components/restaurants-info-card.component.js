@@ -17,7 +17,8 @@ import {
   BoderCard,
 } from "./restaurants-info-card.styles";
 
-export const RestaurantsInfoCard = (restaurant = {}) => {
+export const RestaurantsInfoCard = ({ restaurant }) => {
+  // console.log(restaurant);
   const {
     name = "Eagle Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
