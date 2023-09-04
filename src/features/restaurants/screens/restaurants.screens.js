@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FlatList } from "react-native";
+import { FlatList, Pressable } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import { RestaurantsInfoCard } from "../components/restaurants-info-card.component";
 import { styled } from "styled-components";
@@ -32,7 +32,8 @@ const ListView = styled.View`
   margin-bottom: ${(props) => props.theme.space[5]};
 `;
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
+  // console.log(navigation);
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
   // <ActivityIndicator animating={true} color={Colors.red800} />
   return (
@@ -52,9 +53,13 @@ export const RestaurantsScreen = () => {
             data={restaurants}
             renderItem={({ item }) => {
               return (
-                <Spacer position="bottom" size="large">
-                  <RestaurantsInfoCard restaurant={item} />
-                </Spacer>
+                <Pressable
+                  onPress={() => navigation.navigate("RestaurantDetails")}
+                >
+                  <Spacer position="bottom" size="large">
+                    <RestaurantsInfoCard restaurant={item} />
+                  </Spacer>
+                </Pressable>
               );
             }}
             keyExtractor={(item) => item.name}
