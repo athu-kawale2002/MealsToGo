@@ -3,12 +3,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { RestaurantsNavigator } from "./restaurants.navigator";
+import { MapScreen } from "../../features/map/screen/map.screen";
 import { Text } from "react-native";
 
 //Navigation ke liye
 const Tab = createMaterialTopTabNavigator();
 const Settings = () => <Text>Settings</Text>;
-const Map = () => <Text>Map Screen</Text>;
 
 //Icons Ke liye
 const TAB_ICON = {
@@ -43,7 +43,7 @@ export const AppNavigator = () => {
     <NavigationContainer>
       <Tab.Navigator screenOptions={createScreenOptions}>
         <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-        <Tab.Screen name="Map" component={Map} />
+        <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     </NavigationContainer>

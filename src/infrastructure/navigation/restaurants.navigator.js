@@ -1,21 +1,29 @@
 import React from "react";
 
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  TransitionPresets,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screens";
-import { Text } from "react-native";
+import { RestaurantDetailsComponent } from "../../features/restaurants/screens/restaurants.details.screen";
 
 const RestaurantsStack = createStackNavigator();
 
 export const RestaurantsNavigator = () => {
   return (
-    <RestaurantsStack.Navigator screenOptions={{ headerShown: false }}>
+    <RestaurantsStack.Navigator
+      screenOptions={{
+        ...TransitionPresets.ScaleFromCenterAndroid,
+        headerShown: false,
+      }}
+    >
       <RestaurantsStack.Screen
         name="Restaurants"
         component={RestaurantsScreen}
       />
       <RestaurantsStack.Screen
         name="RestaurantDetails"
-        component={() => <Text>RestaurantDetails bro</Text>}
+        component={RestaurantDetailsComponent}
       />
     </RestaurantsStack.Navigator>
   );

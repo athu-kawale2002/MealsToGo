@@ -51,4 +51,5 @@ export const BoderCard = styled(Card)`
 
 export const CardCover = styled(Card.Cover)`
   padding: 4px;
+  background-color: #e4dded;
 `;

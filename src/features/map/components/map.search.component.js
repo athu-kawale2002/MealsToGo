@@ -1,19 +1,25 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { Searchbar } from "react-native-paper";
 import { LocationContext } from "../../../services/location/location.context";
 const SearchView = styled.View`
-  padding: ${(props) => props.theme.space[2]};
-  border-color: grey;
-  border-bottom-width: 0.19px;
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  padding: 20px;
 `;
 
 const SearchBarTop = styled(Searchbar)`
-  border-radius: ${(props) => props.theme.space[2]};
+  border-radius: 5px;
+  border-color: black;
+  border-width: 0.6px;
   height: 55px;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent;
 `;
 
-export const Search = () => {
+export const MapSearch = () => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
   useEffect(() => {
@@ -23,6 +29,7 @@ export const Search = () => {
     <SearchView>
       <SearchBarTop
         lightTheme
+        icon="map"
         placeholder="Search for a location"
         value={searchKeyword}
         onSubmitEditing={() => {
