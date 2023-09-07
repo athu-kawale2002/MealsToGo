@@ -34,7 +34,7 @@ const ListView = styled.View`
 
 export const RestaurantsScreen = ({ navigation }) => {
   // console.log(navigation);
-  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+  const { restaurants, isLoading } = useContext(RestaurantsContext);
   // <ActivityIndicator animating={true} color={Colors.red800} />
   return (
     <>

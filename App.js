@@ -13,6 +13,7 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { Navigation } from "./src/infrastructure/navigation";
+import { FavouritesContextProvider } from "./src/services/favourites/favourites.context";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -31,11 +32,13 @@ export default function App() {
       <ThemeProvider theme={theme}>
         {/* <RestaurantsScreen /> */}
         <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <Navigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
+          <FavouritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantsContextProvider>
+                <Navigation />
+              </RestaurantsContextProvider>
+            </LocationContextProvider>
+          </FavouritesContextProvider>
         </SafeAreaView>
       </ThemeProvider>
       <StatusBar style="auto" />

@@ -13,6 +13,7 @@
     "@expo-google-fonts/inter": "^0.2.3",
     "@expo-google-fonts/lato": "^0.2.3",
     "@expo-google-fonts/oswald": "^0.2.3",
+    "@expo/vector-icons": "^13.0.0",
     "@react-native-masked-view/masked-view": "^0.2.9",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/material-top-tabs": "^6.6.3",
@@ -36,6 +37,7 @@
     "react-native-search-bar": "^3.5.1",
     "react-native-svg": "^13.12.0",
     "react-native-tab-view": "^3.5.2",
+    "react-native-webview": "13.2.2",
     "styled-components": "^6.0.7"
   },
   "devDependencies": {

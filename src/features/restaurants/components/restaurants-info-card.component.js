@@ -17,6 +17,7 @@ import {
   BoderCard,
   CardCover,
 } from "./restaurants-info-card.styles";
+import { Favourite } from "../../../favourites/favourites.components";
 
 export const RestaurantsInfoCard = ({ restaurant }) => {
   // console.log(restaurant);
@@ -38,6 +39,7 @@ export const RestaurantsInfoCard = ({ restaurant }) => {
   return (
     <View>
       <BoderCard elevation={7}>
+        <Favourite restaurant={restaurant} />
         <CardCover source={{ uri: photos[0] }} />
         <Card.Content>
           <Title variant="bodyMedium">{name}</Title>
