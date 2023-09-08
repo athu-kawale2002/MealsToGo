@@ -13,7 +13,7 @@ const SearchBarTop = styled(Searchbar)`
   height: 55px;
 `;
 
-export const Search = () => {
+export const Search = ({ isFavToggle, onFavToggle }) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
   useEffect(() => {
@@ -22,6 +22,8 @@ export const Search = () => {
   return (
     <SearchView>
       <SearchBarTop
+        icon={isFavToggle ? "heart" : "heart-outline"}
+        onIconPress={onFavToggle}
         lightTheme
         placeholder="Search for a location"
         value={searchKeyword}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FlatList, TouchableOpacity } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import { RestaurantsInfoCard } from "../components/restaurants-info-card.component";
@@ -6,6 +6,8 @@ import { styled } from "styled-components";
 import { Spacer } from "../../../components/spacer/components.spacer";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { Search } from "../components/search.component";
+import { FavouritesBar } from "../../../favourites/favourites-bar.component";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -35,11 +37,22 @@ const ListView = styled.View`
 export const RestaurantsScreen = ({ navigation }) => {
   // console.log(navigation);
   const { restaurants, isLoading } = useContext(RestaurantsContext);
+  const { favourites } = useContext(FavouritesContext);
+  const [isToggled, setIsToggled] = useState(false);
   // <ActivityIndicator animating={true} color={Colors.red800} />
   return (
     <>
       <BackGroundView>
-        <Search />
+        <Search
+          isFavToggle={isToggled}
+          onFavToggle={() => setIsToggled(!isToggled)}
+        />
+        {isToggled && (
+          <FavouritesBar
+            favourites={favourites}
+            onNavigate={navigation.navigate}
+          />
+        )}
         <ListView>
           {isLoading && (
             <LoadingContainer>
