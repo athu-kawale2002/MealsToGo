@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colors } from "../../../infrastructure/theme/colors";
 import { Button } from "react-native-paper";
 
 export const AccountBackground = styled.ImageBackground.attrs({
@@ -25,9 +24,21 @@ export const AccountContainer = styled.View`
 
 export const AuthButton = styled(Button)`
   padding: 2px;
+  margin-left: 64px;
+  margin-right: 64px;
 `;
 
 export const Title = styled.Text`
   font-size: 30px;
   font-weight: bold;
+`;
+
+export const ErrorContainer = styled.View`
+  max-width: 250px;
+  align-items: center;
+  align-self: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: ${(props) => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[2]};
 `;
